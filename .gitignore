@@ -1,0 +1,42 @@
+# ▶️ Python 기본
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.log
+
+# ▶️ Jupyter / 개발 환경
+.ipynb_checkpoints/
+.env
+.venv/
+venv/
+.envrc
+
+# ▶️ VSCode 설정 등 IDE
+.vscode/
+.idea/
+
+# ▶️ 예측 모델 및 민감 파일
+models/
+*.pkl
+.forecast_env
+*.forecast_env
+
+# ▶️ Docker 관련 빌드 캐시
+*.tar
+*.bak
+*.db
+*.pid
+
+# ▶️ OS별 캐시 파일
+.DS_Store
+Thumbs.db
+
+# ▶️ 테스트 결과 및 빌드 아티팩트
+*.egg-info/
+dist/
+build/
+
+# ▶️ GitHub Copilot 로그 (선택)
+copilot-log.txt
