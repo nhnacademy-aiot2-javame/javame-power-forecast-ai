@@ -29,17 +29,6 @@ jobs:
           docker push janggon/javame-forecast-api:$IMAGE_TAG
           echo "FORECAST_IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
 
-      - name: Create .forecast_env
-        run: |
-          cd /home/aiot2/aiot2-team3/docker/javame
-          cat <<EOF > .forecast_env
-          URL=http://javame-influxdb:8086
-          TOKEN=${{ secrets.INFLUX_TOKEN }}
-          ORG=javame
-          BUCKET=data
-          EOF
-      
-
       - name: Deploy to Remote Server via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -50,6 +39,15 @@ jobs:
           script: |
             cd /home/aiot2/aiot2-team3/docker/javame
             SERVICE_NAME=forecast-api
+
+            # .forecast_env 생성
+            cat <<EOF > .forecast_env
+            URL=http://javame-influxdb:8086
+            TOKEN=${{ secrets.INFLUX_TOKEN }}
+            ORG=javame
+            BUCKET=data
+            EOF
+
 
             # .env에 이미지 태그 갱신
             if grep -q '^FORECAST_IMAGE_TAG=' .env; then
