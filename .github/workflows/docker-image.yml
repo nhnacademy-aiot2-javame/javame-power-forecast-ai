@@ -31,6 +31,7 @@ jobs:
 
       - name: Create .forecast_env
         run: |
+          cd /home/aiot2/aiot2-team3/docker/javame
           cat <<EOF > .forecast_env
           URL=http://javame-influxdb:8086
           TOKEN=${{ secrets.INFLUX_TOKEN }}
